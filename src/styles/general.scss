@@ -1,7 +1,21 @@
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 
-h1 {
-    color: $font-color;
-    @include main-font-center;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: sans-serif;
+}
+
+body{
+    
+    background-color: $bg-color;
+    width: 95%;
+    margin: 0 auto;
+    
 }
