@@ -20,13 +20,14 @@ export default {
 
     return {
       store,
+      
     };
 
   },
   created() {
 
     this.getTopRated();
-
+    
   },
   methods: {
 
@@ -92,6 +93,7 @@ export default {
       this.getTv()
 
     }
+
   },
 };
 

@@ -15,9 +15,39 @@ import { store } from "../../store";
 
             return {
                 store,
+                numeroConTreDecimali: this.propsElement.vote_average ,
+                risultatoArrotondato: null,
+                stelline: null
             };
 
         },
+        mounted() {
+
+            this.risultatoArrotondato = this.arrotondaPerEccesso(this.numeroConTreDecimali);
+            this.stelline = this.risultatoArrotondato ? this.generaStelline(this.risultatoArrotondato) : "No vote";
+        },
+        methods: {
+
+            arrotondaPerEccesso(num) {
+
+                var numMoltiplicato = num * 10;
+                var numArrotondato = Math.ceil(numMoltiplicato);
+                var risultato = numArrotondato / 10;
+                return risultato;
+            },
+
+            generaStelline(num) {
+
+                var stelline = '';
+                var parteInteri = Math.floor(num); // Parte intera del numero arrotondato
+                var stelleDaGenerare = Math.min(parteInteri, 5); // Massimo 10 stelle
+                for (var i = 0; i < stelleDaGenerare; i++) {
+                    stelline += '⭐'; // Aggiungi una stella
+                }
+                return stelline;
+                
+            }
+        }
 
     };
 
@@ -41,7 +71,7 @@ import { store } from "../../store";
     
         <h5>{{ propsElement.original_language  }}</h5>
 
-        <h5>{{ propsElement.vote_average  }}</h5>
+        <h5>Vote: {{ stelline }}</h5>
 
     </div>
     
