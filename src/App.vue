@@ -27,7 +27,7 @@ export default {
   created() {
 
     this.getTopRated();
-    
+
   },
   methods: {
 
@@ -63,6 +63,7 @@ export default {
         });
       }
 
+      store.searchText = ''
       
 
     },
@@ -83,7 +84,7 @@ export default {
         });
       }
 
-      
+      store.searchText = ''
 
 
     },

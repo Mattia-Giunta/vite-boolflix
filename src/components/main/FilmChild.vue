@@ -30,18 +30,19 @@ import { store } from "../../store";
 
             arrotondaPerEccesso(num) {
 
-                var numMoltiplicato = num * 10;
-                var numArrotondato = Math.ceil(numMoltiplicato);
-                var risultato = numArrotondato / 10;
+                let numMoltiplicato = num * 10;
+                let numArrotondato = Math.ceil(numMoltiplicato);
+                let risultato = numArrotondato / 10;
                 return risultato;
             },
 
             generaStelline(num) {
 
-                var stelline = '';
-                var parteInteri = Math.floor(num); // Parte intera del numero arrotondato
-                var stelleDaGenerare = Math.min(parteInteri, 5); // Massimo 10 stelle
-                for (var i = 0; i < stelleDaGenerare; i++) {
+                let stelline = '';
+                let parteInteri = Math.floor(num); // Parte intera del numero arrotondato
+                let stelleDaGenerare = Math.min(parteInteri, 5); // Massimo 5 stelle
+
+                for (let i = 0; i < stelleDaGenerare; i++) {
                     stelline += '⭐'; // Aggiungi una stella
                 }
                 return stelline;
@@ -59,8 +60,17 @@ import { store } from "../../store";
 
 <div class="card-container">
             
+    <div>
+
+        <img 
+        v-if="propsElement.poster_path"
+        :src="`https://image.tmdb.org/t/p/w500${propsElement.poster_path}`"
+        alt=""> 
+            
+        <span v-else>NO IMAGE</span>
+
+    </div>
     
-    <img :src="`https://image.tmdb.org/t/p/w500${propsElement.poster_path}`" alt=""> 
 
 
     <div class="film-info">
@@ -112,6 +122,12 @@ import { store } from "../../store";
             opacity: 10%;
         }    
         
+    }
+
+    span{
+        font-size: 30px;
+        position: absolute;
+        color: red;
     }
         
     .film-info{
