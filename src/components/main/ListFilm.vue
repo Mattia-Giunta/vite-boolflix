@@ -30,31 +30,41 @@ import { store } from "../../store";
 
     <div class="container">
 
-        <FilmChild/>
-
         
 
         <figure>
 
 
-            <div class="card-container"></div>
-
-            <div class="card-container"></div>
-
-            <div class="card-container"></div>
-
-            <div class="card-container"></div>
-
-            <div class="card-container"></div>
-
-            <div class="card-container"></div>
-
+            <FilmChild v-for="(element,index) in store.topRatedList" 
+            :key="index"
+            :propsElement="element"/>
+            
 
                
 
         </figure>
 
-      
+        <h1>La tua ricerca</h1>
+        <div >
+
+            <h2>Film</h2>
+
+            <div class="search-area">
+                <FilmChild v-for="(element,index) in store.filmList" 
+                :key="index"
+                :propsElement="element" />
+            </div>
+            
+
+            <h2>Serie TV</h2>
+
+            <div class="search-area">
+                <FilmChild v-for="(element,index) in store.tvList" 
+                :key="index"
+                :propsElement="element" />
+            </div>
+
+        </div>
 
 
     </div>
@@ -67,26 +77,28 @@ import { store } from "../../store";
 @use "../../styles/partials/mixins" as *;
 
 .container{
-    border: 1px solid red;
-    margin-top: 5%;
+    
     
 
     figure{
         display: flex;
-        gap: 10px;
-        
-
-        
-        .card-container{
-            background-color: grey;
-            height: 400px;
-            flex-basis: calc(100% / 5);
-            color: white;
-        
-        }
+        gap: 5px;
+        overflow: auto;
+        border: 1px solid red;
+    
     }
     
-    
+    h2{
+        color: gray;
+        text-transform: uppercase;
+        margin-top: 2%;
+        font-size: 30px;
+    }
+    .search-area{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
     
 }
 

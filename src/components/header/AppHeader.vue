@@ -7,6 +7,10 @@ import { store } from "../../store";
 
     name: "AppHeader",
 
+    emits:[
+    'emitGetData'
+    ],
+
 
     data() {
             
@@ -31,7 +35,13 @@ import { store } from "../../store";
 
       <img src="../../../src/assets/img/Netflix_Logo_RGB.png" alt="">
 
-      <input type="text" placeholder="Cerca un Film o Serie TV">
+      <input 
+      type="text" 
+      placeholder="Cerca un Film o Serie TV"
+      v-model="store.searchText"/>
+
+      <i class="fa-solid fa-magnifying-glass"
+      @click="$emit('emitGetData')"></i>
 
     </figure>
 
@@ -51,7 +61,7 @@ figure{
   margin-top: 2%;
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 2%;
 
   img{
   width: 200px;
@@ -61,6 +71,12 @@ figure{
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
+  }
+
+  i{
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
   }
 }
 
