@@ -31,6 +31,7 @@ export default {
   },
   methods: {
 
+    // funzione che permette tramite la chiamata axios di prendere i film TopRated
     getTopRated() {
 
       store.apiTopRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=0ba99d9de73107114d69b64eea8aeebe';
@@ -45,6 +46,7 @@ export default {
 
         });
     },
+    // funzione che permette tramite la chiamata axios di prendere i film
     getFilm(){
 
       
@@ -63,10 +65,11 @@ export default {
         });
       }
 
-      store.searchText = ''
+      
       
 
     },
+    // funzione che permette tramite la chiamata axios di prendere le serie tv
     getTv(){
 
       
@@ -81,13 +84,16 @@ export default {
 
         store.tvList = result.data.results;
 
+        store.searchText = "";
         });
+
       }
 
-      store.searchText = ''
+      
 
 
     },
+    // funzione che permette di accoppiare le funzioni al searc dell'emit
     search(){
 
       this.getFilm()

@@ -35,6 +35,7 @@ import { store } from "../../store";
         <figure>
 
 
+            <!-- richiamo del componente figlio -->
             <FilmChild v-for="(element,index) in store.topRatedList" 
             :key="index"
             :propsElement="element"/>

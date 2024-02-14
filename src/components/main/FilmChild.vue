@@ -27,7 +27,7 @@ import { store } from "../../store";
             this.stelline = this.risultatoArrotondato ? this.generaStelline(this.risultatoArrotondato) : "No vote";
         },
         methods: {
-
+            // funzione che permette di trasformare il "vote_average" e arrotondarlo per eccesso
             arrotondaPerEccesso(num) {
 
                 let numMoltiplicato = num * 10;
@@ -36,15 +36,20 @@ import { store } from "../../store";
                 return risultato;
             },
 
+            // funzione che abbina il numero in stelline colorate e con una condizione che mette quelle rimanenti vuote
             generaStelline(num) {
 
                 let stelline = '';
                 let parteInteri = Math.floor(num); // Parte intera del numero arrotondato
                 let stelleDaGenerare = Math.min(parteInteri, 5); // Massimo 5 stelle
 
-                for (let i = 0; i < stelleDaGenerare; i++) {
-                    stelline += '⭐'; // Aggiungi una stella
-                }
+                for (var i = 0; i < 5; i++) {
+                        if (i < stelleDaGenerare) {
+                            stelline += '⭐'; // Aggiungi una stella piena
+                        } else {
+                            stelline += '☆'; // Aggiungi una stella vuota
+                        }
+                    }
                 return stelline;
                 
             }
@@ -79,7 +84,7 @@ import { store } from "../../store";
 
         <h5>{{ (propsElement.original_title) ? propsElement.original_title : propsElement.original_name }}</h5>
     
-        <h5>{{ propsElement.original_language  }}</h5>
+        <h5 :class="`lang-icon lang-icon-${propsElement.original_language}`"></h5>
 
         <h5>Vote: {{ stelline }}</h5>
 

@@ -35,11 +35,13 @@ import { store } from "../../store";
 
       <img src="../../../src/assets/img/Netflix_Logo_RGB.png" alt="">
 
+      <!-- input con collegamento v-model -->
       <input 
       type="text" 
       placeholder="Cerca un Film o Serie TV"
       v-model="store.searchText"/>
 
+      <!-- icona lente con collegamento emit -->
       <i class="fa-solid fa-magnifying-glass"
       @click="$emit('emitGetData')"></i>
 
