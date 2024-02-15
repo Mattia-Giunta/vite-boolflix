@@ -30,9 +30,8 @@ import { store } from "../../store";
             // funzione che permette di trasformare il "vote_average" e arrotondarlo per eccesso
             arrotondaPerEccesso(num) {
 
-                let numMoltiplicato = num * 10;
-                let numArrotondato = Math.ceil(numMoltiplicato);
-                let risultato = numArrotondato / 10;
+                let numMoltiplicato = num / 2;
+                let risultato = Math.ceil(numMoltiplicato);
                 return risultato;
             },
 

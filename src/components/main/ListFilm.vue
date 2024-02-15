@@ -84,7 +84,7 @@ import { store } from "../../store";
     figure{
         display: flex;
         gap: 5px;
-        overflow: auto;
+        overflow: hidden;
         border: 1px solid red;
     
     }
